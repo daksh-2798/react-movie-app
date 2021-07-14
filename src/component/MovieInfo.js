@@ -1,8 +1,26 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 
-const MovieInfo = () => {
+
+const MovieInfo = (props) => {
+    const[movieInfo,setMovieInfo] = useState();
+    useEffect(() => {
+        axios.get(
+          `https://www.omdbapi.com/?i=${props.selectMovie}&apikey=${process.env.REACT_APP_API_KEY}`,
+        ).then((response) => {setMovieInfo(response.data);
+        console.log(response.data);});
+      }, [props.selectMovie]);
     return(
-        <h3>Movie Info</h3>
+         <div>
+             {movieInfo ? (
+                 <div>
+                 <img src={movieInfo.Poster} alt={movieInfo.Title} />
+                 <h3>{movieInfo.Title}</h3>
+                 </div>
+             ):null}
+         </div>
+
     );
 }
 
