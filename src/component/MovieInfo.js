@@ -5,12 +5,13 @@ import { useEffect } from 'react';
 
 const MovieInfo = (props) => {
     const[movieInfo,setMovieInfo] = useState();
+    const Apikey = process.env.REACT_APP_API_KEY;
     useEffect(() => {
         axios.get(
-          `https://www.omdbapi.com/?i=${props.selectMovie}&apikey=${process.env.REACT_APP_API_KEY}`,
+          `https://www.omdbapi.com/?i=${props.selectMovie}&apikey=38225274`
         ).then((response) => {setMovieInfo(response.data);
         console.log(response.data);});
-      }, [props.selectMovie]);
+      }, [props.selectMovie,Apikey]);
     return(
          <div>
              {movieInfo ? (
