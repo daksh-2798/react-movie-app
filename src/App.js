@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     display: 'none',
+    textAlign: 'left',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
@@ -119,7 +120,10 @@ function App() {
           <MovieList key={index}
           movie={movie}
           onMovieSelect={onMovieSelect} />
-        ))) : null
+        )))
+        : (
+          <h1 style={{color:'blueviolet', alignItems:'center',marginTop:'250px' ,textAlign:'center'}}>PLease Enter the movie</h1>
+        )
         }
     </div>
     </div>
